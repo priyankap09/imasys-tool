@@ -2,6 +2,8 @@ package com.litap.controller;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -60,8 +62,9 @@ public class OfferController {
 	@RequestMapping("offer")
 	public List<Offer> getAllOffer(){
 		
-		List<Offer> list=	offerService.getAllOffers();
-		return list;
+//		return	offerService.getAllOffers();
+		return  StreamSupport.stream(offerService.getAllOffers().spliterator(), false)
+				.collect(Collectors.toList());
 		
 	}
 	
