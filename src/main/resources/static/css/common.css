@@ -1,0 +1,32 @@
+.btn1
+{
+	padding: 15px 30px;
+	background-color: black;
+	color: rgb(28, 255, 255);
+	border-radius: 10%;
+	font-size: 20px;
+	 	
+}
+
+input[type="text"]
+{
+	padding: 5px 3px;
+	font-size: 14px;
+}
+
+label {
+	font-size: 17px;
+	color: white;
+}
+
+	table, td, th {
+					border: 1px solid cyan;
+				}
+				
+				table {
+					margin: left;
+				}
+				
+				th, td {
+					padding: 10px;
+				}
