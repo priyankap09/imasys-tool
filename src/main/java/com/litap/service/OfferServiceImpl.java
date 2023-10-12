@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.litap.dao.OfferDAO;
 import com.litap.entity.Offer;
@@ -62,4 +63,16 @@ public class OfferServiceImpl implements OfferService{
 		return offerFrmDB;
 	}
 
+
+	public List<Offer> offerListByQuery(String fromDate, String toDate) {
+		
+		return offerDAO.getOfferByQuery(fromDate, toDate);
+		 
+	}
+	
+public List<Offer> offerListByCriteria(String fromDate, String toDate) {
+		
+		return offerDAO.getOfferByCriteria(fromDate, toDate);
+		 
+	}
 }

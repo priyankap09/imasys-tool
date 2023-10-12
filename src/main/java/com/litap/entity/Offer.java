@@ -9,8 +9,21 @@ public class Offer {
 	@Id
 	private int offerid;
 	private String offerDesc;
-	private String status;
+	private String status, validfrom, validto;
 	
+	
+	public String getValidfrom() {
+		return validfrom;
+	}
+	public void setValidfrom(String validfrom) {
+		this.validfrom = validfrom;
+	}
+	public String getValidto() {
+		return validto;
+	}
+	public void setValidto(String validto) {
+		this.validto = validto;
+	}
 	public int getOfferid() {
 		return offerid;
 	}

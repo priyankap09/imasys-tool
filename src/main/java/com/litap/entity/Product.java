@@ -7,7 +7,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 @Entity
-public class Product {
+public class Product implements Comparable<Product>{
 	
 	@Id
 	private int productId;	
@@ -21,6 +21,20 @@ public class Product {
 	
 	
 	
+	public Product() {
+		super();
+		
+	}
+	public Product(int productId, String prodName, String prodType, String prodCategory, double prodPrice,
+			ProductType productType) {
+		super();
+		this.productId = productId;
+		this.prodName = prodName;
+		this.prodType = prodType;
+		this.prodCategory = prodCategory;
+		this.prodPrice = prodPrice;
+		this.productType = productType;
+	}
 	public int getProductId() {
 		return productId;
 	}
@@ -56,6 +70,13 @@ public class Product {
 	}
 	public void setProductType(ProductType productType) {
 		this.productType = productType;
+	}
+	
+	
+	@Override
+	public int compareTo(Product o) {
+		
+		return o.productId - this.productId;
 	}
 	
 	

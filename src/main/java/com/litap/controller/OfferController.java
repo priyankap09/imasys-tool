@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.litap.entity.Offer;
+import com.litap.exceptions.OfferException;
 import com.litap.service.OfferServiceImpl;
 
 @RestController
@@ -30,9 +31,9 @@ public class OfferController {
 	OfferServiceImpl offerService;
 	
 	@GetMapping("getOffer/{offerId}")
-	public Optional<Offer> getOffer(@PathVariable int offerId)
+	public Offer getOffer(@PathVariable int offerId)
 	{
-		return offerService.getOffer(offerId);
+		return offerService.getOffer(offerId).orElseThrow(()->new OfferException(offerId));
 		
 
 	}
@@ -68,7 +69,7 @@ public class OfferController {
 		
 	}
 	
-	@PostMapping("/save/offer")
+	@PostMapping(value="/save/offer")//, consumes = "application/json")
 	public Offer saveOffer(@RequestBody Offer offer) {
 		
 		Offer ofr = offerService.saveOffer(offer);
@@ -92,6 +93,14 @@ public class OfferController {
 		return msg;
 	}
 	
+	@RequestMapping("/offerListByQuery/{fromDate}/{toDate}")
+	public List<Offer> offerListByQuery(@PathVariable String fromDate, @PathVariable String toDate){
+		return offerService.offerListByQuery(fromDate, toDate);
+	}
 	
+	@RequestMapping("/offerListByCriteria/{fromDate}/{toDate}")
+	public List<Offer> offerListByCriteria(@PathVariable String fromDate, @PathVariable String toDate){
+		return offerService.offerListByCriteria(fromDate, toDate);
+	}
 	
 }
